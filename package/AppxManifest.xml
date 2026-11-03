@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+    xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+    xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+    xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
+    xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+    xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+    xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5"
+    xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+    xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+    IgnorableNamespaces="uap uap10 desktop desktop4 desktop5 com rescap">
+
+  <Identity
+      Name="Veqlo.Quick"
+      Publisher="CN=Veqlo"
+      Version="1.1.0.0"
+      ProcessorArchitecture="x64" />
+
+  <Properties>
+    <DisplayName>Veqlo Quick</DisplayName>
+    <PublisherDisplayName>Veqlo</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <uap10:AllowExternalContent>true</uap10:AllowExternalContent>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+
+  <Applications>
+    <Application Id="VeqloQuickApp" Executable="VeqloQuick.exe" uap10:RuntimeBehavior="win32App" uap10:TrustLevel="mediumIL">
+      <uap:VisualElements
+          DisplayName="Veqlo Quick"
+          Description="Windows Explorer image utility for Convert, Compress, and Resize"
+          Square150x150Logo="Assets\Square150x150Logo.png"
+          Square44x44Logo="Assets\Square44x44Logo.png"
+          BackgroundColor="transparent">
+      </uap:VisualElements>
+
+      <Extensions>
+        <!-- Windows 11 Modern Context Menu Registration for all supported image formats -->
+        <desktop4:Extension Category="windows.fileExplorerContextMenus">
+          <desktop4:FileExplorerContextMenus>
+            <desktop5:ItemType Type=".jpg">
+              <desktop5:Verb Id="VeqloQuick" Clsid="65863AF6-B22D-4C52-BB0F-610D11268E04" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".jpeg">
+              <desktop5:Verb Id="VeqloQuick" Clsid="65863AF6-B22D-4C52-BB0F-610D11268E04" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".png">
+              <desktop5:Verb Id="VeqloQuick" Clsid="65863AF6-B22D-4C52-BB0F-610D11268E04" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".webp">
+              <desktop5:Verb Id="VeqloQuick" Clsid="65863AF6-B22D-4C52-BB0F-610D11268E04" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".bmp">
+              <desktop5:Verb Id="VeqloQuick" Clsid="65863AF6-B22D-4C52-BB0F-610D11268E04" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".tif">
+              <desktop5:Verb Id="VeqloQuick" Clsid="65863AF6-B22D-4C52-BB0F-610D11268E04" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".tiff">
+              <desktop5:Verb Id="VeqloQuick" Clsid="65863AF6-B22D-4C52-BB0F-610D11268E04" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".ico">
+              <desktop5:Verb Id="VeqloQuick" Clsid="65863AF6-B22D-4C52-BB0F-610D11268E04" />
+            </desktop5:ItemType>
+          </desktop4:FileExplorerContextMenus>
+        </desktop4:Extension>
+
+        <!-- Out-of-Process COM Server (Surrogate) via dllhost.exe for Explorer Isolation -->
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:SurrogateServer DisplayName="Veqlo Quick Shell Extension Surrogate">
+              <com:Class Id="65863AF6-B22D-4C52-BB0F-610D11268E04" Path="VeqloQuickShell.dll" ThreadingModel="STA" />
+              <com:Class Id="1ADC95E5-04A9-45AD-9CE9-470680AA2E5A" Path="VeqloQuickShell.dll" ThreadingModel="STA" />
+              <com:Class Id="2BDD86F6-15BA-46BE-ADFA-581791BB3F6B" Path="VeqloQuickShell.dll" ThreadingModel="STA" />
+              <com:Class Id="3CEE9707-26CB-47CF-BE0B-692802CC407C" Path="VeqloQuickShell.dll" ThreadingModel="STA" />
+              <com:Class Id="4DFF0818-37DC-48DF-BF1C-7A3913DD518D" Path="VeqloQuickShell.dll" ThreadingModel="STA" />
+            </com:SurrogateServer>
+          </com:ComServer>
+        </com:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+</Package>

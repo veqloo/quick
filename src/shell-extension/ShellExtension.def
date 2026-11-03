@@ -1,0 +1,4 @@
+LIBRARY "VeqloQuickShell"
+EXPORTS
+    DllGetClassObject PRIVATE
+    DllCanUnloadNow   PRIVATE
